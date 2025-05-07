@@ -1,6 +1,7 @@
 'use client';
 import axios from 'axios';
 import { useFormik } from 'formik';
+import { useRouter } from 'next/navigation';
 import React from 'react'
 import toast from 'react-hot-toast';
 import * as Yup from 'yup';
@@ -23,6 +24,8 @@ const SignupSchema = Yup.object().shape({
 
 const Signup = () => {
 
+  const router = useRouter();
+
   const signupForm = useFormik({
     initialValues: {
       name: '',
@@ -38,8 +41,9 @@ const Signup = () => {
       try {
         const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/user/add`, values)
         console.log(res.status);
-        console.log(res.data);
         toast.success('successfully');
+        console.log(res.data);
+        router.push('/login');
 
       } catch (error) {
 
@@ -52,8 +56,8 @@ const Signup = () => {
   });
 
   return (
-    <div>
-      <div className="mt-7 bg-white border border-gray-200 rounded-xl shadow-2xs dark:bg-neutral-900 dark:border-neutral-700">
+    <div className="min-h-screen flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8">
+      <div className="mt-7 w-1/2 mx-auto bg-white border border-gray-200 rounded-xl shadow-2xs dark:bg-neutral-900 dark:border-neutral-700">
         <div className="p-4 sm:p-7">
           <div className="text-center">
             <h1 className="block text-2xl font-bold text-gray-800 dark:text-white">

@@ -50,8 +50,8 @@ router.post('/authenticate', (req,res) =>{
     if (result)
     {
       //login success -generate token
-      const { _id, name, email,} =result;
-      const payload = { _id,name,email};
+      const { _id, name, email } = result;
+      const payload = { _id, name, email };
       jwt.sign(
         payload,
         process.env.JWT_SECRET,
@@ -59,21 +59,19 @@ router.post('/authenticate', (req,res) =>{
         (err,token) => {
           if (err){
             console.log(err);
-            res.status(200).json(err);
-          }else{
-            res.status(500).json({token});
+            res.status(500).json(err);
+          } else {
+            res.status(200).json({token}); // Fixed: Was sending 500 for success
           }
         }
       )
-    }else{
-    //login failed -send error message
-    res.status(401).json({Message:'invalid username or password '});
+    } else {
+      //login failed -send error message
+      res.status(401).json({message:'Invalid email or password'}); // Fixed: Added proper error message
     }
-
   }).catch((err) => {
     console.log(err);
     res.status(500).json(err);
-    
   });
 })
 //getall
