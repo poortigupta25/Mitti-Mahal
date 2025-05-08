@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
-const UserRouter =require('./routers/UserRouter');
-const ProductRouter =require('./routers/ProductRouter');
+const UserRouter =require('./Routers/UserRouter');
+const ProductRouter =require('./Routers/ProductRouter');
 const cors = require('cors')
 
 const app = express();
@@ -10,7 +10,7 @@ const port = process.env.PORT ||5000;
 app.use(cors({origin: '*'}))
 app.use(express.json());
 app.use ('/User',UserRouter);
-app.use ('/Product',ProductRouter);
+app.use ('/product',ProductRouter);
 //endpoint or route
 app.get('/',(req, res) => {
     res.send('response from express');
