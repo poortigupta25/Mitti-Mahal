@@ -25,23 +25,24 @@ const AddProduct = () => {
       description: '',
       category: '',
       color: '',
+      image: ''
     },
 
     onSubmit: async (values) => {
       console.log(values);
 
       try {
-          const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/product/add`, values)
-          console.log(res.status);
-          console.log(res.data);
-          toast.success('Product added successfully');
+        const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/product/add`, values)
+        console.log(res.status);
+        console.log(res.data);
+        toast.success('Product added successfully');
       } catch (error) {
-          console.log(error);
-          toast.error('Something went wrong');
+        console.log(error);
+        toast.error('Something went wrong');
       }
-      
-  },
-  validationSchema: ProductSchema,
+
+    },
+    validationSchema: ProductSchema,
 
   });
 
@@ -58,7 +59,7 @@ const AddProduct = () => {
         toast.success('file upload successfully');
         console.log(result.data);
         setPreview(result.data.url);
-        // productForm.setFieldValue('image', result.data.url);
+        formik.setFieldValue('image', result.data.url);
       }).catch((err) => {
         console.log(err);
         toast.error('failed to upload file');
@@ -103,13 +104,18 @@ const AddProduct = () => {
           ))}
 
           <div className='flex justify-center items-center '>
-            <label className='block rounded-lg text-2xl border-2 border-dashed p-5 mt-5 cursor-pointer w-1/2 text-blue-500' htmlFor="upload">click here to upload file</label>
-            <input id='upload' type="file" onChange={upload} hidden />
-            {
-              preview && (
-                <img className='h-6' src={preview} alt="" />
-              )
-            }
+            <label className=" text-sm mb-2 dark:text-white capitalize" htmlFor="upload">image
+              <input id='upload' type="file" onChange={upload} hidden />
+            </label>
+            <input
+              type="text"
+              id='image'
+              value={formik.values.image}
+              onChange={formik.handleChange}
+              className="py-2.5 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400"
+            />
+
+
           </div>
 
           <button
