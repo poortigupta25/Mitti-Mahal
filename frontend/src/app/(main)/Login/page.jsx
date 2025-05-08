@@ -37,7 +37,7 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-amber-50">
-      <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
+      <div className="w-full max-w-md bg-amber-100 p-8 rounded-lg shadow-md">
         <h1 className="text-2xl font-bold text-center text-amber-900 mb-6">Sign In</h1>
         <form onSubmit={loginForm.handleSubmit} className="space-y-4">
           <input
@@ -46,7 +46,7 @@ const Login = () => {
             placeholder="Email"
             onChange={loginForm.handleChange}
             value={loginForm.values.email}
-            className="w-full border rounded p-2 focus:ring-amber-500"
+            className="w-full border-2 border-amber-900/75 rounded p-2 focus:ring-amber-500"
           />
           <input
             type="password"
@@ -54,7 +54,7 @@ const Login = () => {
             placeholder="Password"
             onChange={loginForm.handleChange}
             value={loginForm.values.password}
-            className="w-full border rounded p-2 focus:ring-amber-500"
+            className="w-full border-2 border-amber-900/75 rounded p-2 focus:ring-amber-500"
           />
           <button
             type="submit"

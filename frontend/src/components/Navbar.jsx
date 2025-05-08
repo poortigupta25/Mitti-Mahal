@@ -100,33 +100,33 @@ const Navbar = () => {
   ];
 
   return (
-    <header className={`fixed w-full z-50 ${scrolled ? "bg-amber-900 shadow" : "bg-transparent"} transition`}>
+    <header className={`fixed w-full z-50 ${scrolled ? "bg-amber-900 shadow text-amber-100" : "bg-transparent text-amber-900"} transition`}>
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-        <Link href="/" className="flex items-center gap-2 text-amber-100 text-xl font-bold">
+        <Link href="/" className="flex items-center gap-2 text-amber-10 text-xl font-bold">
           <img src="/logo.png" alt="Mitti Mahal" className="h-10 w-10 rounded-full" />
           Mitti Mahal
         </Link>
         
         <nav className="hidden md:flex gap-6 items-center">
           {navLinks.map(link => (
-            <Link key={link.name} href={link.href} className="text-amber-100 hover:text-amber-300 transition">
+            <Link key={link.name} href={link.href} className="text-amber-10 hover:text-amber-300 transition">
               {link.name}
             </Link>
           ))}
           
           {/* Login and Signup buttons */}
           <div className="flex items-center gap-4 ml-6">
-            <Link href="/login" className="flex items-center gap-1 text-amber-100 hover:text-amber-300 transition">
+            <Link href="/login" className="flex items-center gap-1 text-amber-10 hover:text-amber-300 transition">
               <LogIn size={18} />
               <span>Login</span>
             </Link>
-            <Link href="/signup" className="flex items-center gap-1 text-amber-100 hover:text-amber-300 transition">
+            <Link href="/signup" className="flex items-center gap-1 text-amber-10 hover:text-amber-300 transition">
               <User size={18} />
               <span>Signup</span>
             </Link>
             
             {/* Cart button with badge */}
-            <Link href="/cart" className="relative p-2 text-amber-100 hover:text-amber-300 transition">
+            <Link href="/cart" className="relative p-2 text-amber-10 hover:text-amber-300 transition">
               <ShoppingBag size={20} />
               <span className="absolute -top-1 -right-1 bg-amber-300 text-amber-900 text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
                 3
