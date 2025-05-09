@@ -37,6 +37,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Link from 'next/link';
 
 const BrowseProducts = () => {
   const [products, setProducts] = useState([]);
@@ -80,9 +81,11 @@ const BrowseProducts = () => {
                 <h2 className="text-lg font-semibold text-amber-900 mb-1">{p.name}</h2>
                 <p className="text-amber-700 font-bold mb-2">${p.price}</p>
                 <p className="text-sm text-stone-700 mb-3 line-clamp-2">{p.description}</p>
-                <button className="w-full bg-amber-700 hover:bg-amber-800 text-white py-2 rounded transition">
-                  View Details
-                </button>
+                <Link href={`/view-product/${p._id}`}>
+                  <button className="w-full bg-amber-700 hover:bg-amber-800 text-white py-2 rounded transition">
+                    View Details
+                  </button>
+                </Link>
               </div>
             </div>
           ))}

@@ -9,7 +9,7 @@ const port = process.env.PORT ||5000;
 //middle were
 app.use(cors({origin: '*'}))
 app.use(express.json());
-app.use ('/User',UserRouter);
+app.use ('/user',UserRouter);
 app.use ('/product',ProductRouter);
 //endpoint or route
 app.get('/',(req, res) => {
