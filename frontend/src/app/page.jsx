@@ -16,7 +16,7 @@ const Home = () => {
           <img
             className="w-full h-full object-cover"
             alt="Pottery hero"
-            src="/pexels-retosatti-22823.webp"
+            src="/slide.jpg"
           />
           <div className="absolute inset-0 bg-black/30" />
           <div className="absolute inset-0 flex items-center justify-center">

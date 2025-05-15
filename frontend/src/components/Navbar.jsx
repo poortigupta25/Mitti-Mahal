@@ -92,13 +92,13 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "About", href: "/about" },
     { name: "Products", href: "/browse-products" },
+    { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
   ];
 
   return (
-    <header className={`fixed w-full z-50 ${scrolled ? "bg-amber-900 shadow text-amber-100" : "bg-transparent text-amber-900"} transition`}>
+    <header className={`fixed w-full z-50 ${scrolled ? "bg-amber-900 shadow text-amber-100" : "bg-amber-50 text-amber-900"} transition`}>
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
         <Link href="/" className="flex items-center gap-2 text-amber-10 text-xl font-bold">
           <img src="/logo.png" alt="Mitti Mahal" className="h-10 w-10 rounded-full" />

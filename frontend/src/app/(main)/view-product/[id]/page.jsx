@@ -1,11 +1,13 @@
 'use client';
 
 import { useParams } from 'next/navigation';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { useCart } from '@/context/CartContext';
 
 const ViewProduct = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
+  const { addToCart } = useCart();
 
   const getProductData = async () => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/product/getbyid/` + id);
@@ -106,7 +108,10 @@ const ViewProduct = () => {
             )}
 
             <div className="flex gap-4 pt-6">
-              <button className="flex-1 bg-amber-600 hover:bg-amber-700 text-white py-3 px-6 rounded-lg font-medium transition">
+              <button
+                className="flex-1 bg-amber-600 hover:bg-amber-700 text-white py-3 px-6 rounded-lg font-medium transition"
+                onClick={() => addToCart(product)}
+              >
                 Add to Cart
               </button>
               <button className="flex-1 border border-amber-600 text-amber-600 hover:bg-amber-50 py-3 px-6 rounded-lg font-medium transition">
