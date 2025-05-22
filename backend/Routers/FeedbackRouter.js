@@ -1,33 +1,23 @@
 const express = require("express");
-
 const router = express.Router();
-const Model = require('../Models/ProductModel');
-const jwt = require('jsonwebtoken');
-require('dotenv').config();
+const FeedbackModel = require('../Models/FeedbackModel');
 
-
+// Create feedback
 router.post('/add', (req, res) => {
-  console.log(req.body);
-  new Model(req.body).save()
+  new FeedbackModel(req.body).save()
     .then((result) => {
       res.status(200).json(result);
-
     }).catch((err) => {
       console.log(err);
       res.status(500).json(err);
-
     });
 });
 
-router.get('/getbyemail/:email', (req, res) => {
-  console.log(req.params.email);
-  res.send('respond from user email');
-});
-
-
-//getall
+// Get all feedback
 router.get('/getall', (req, res) => {
-  Model.find()
+  FeedbackModel.find()
+    .populate('user', 'name email')
+    .populate('product', 'name')
     .then((result) => {
       res.status(200).json(result);
     }).catch((err) => {
@@ -36,32 +26,32 @@ router.get('/getall', (req, res) => {
     });
 });
 
-router.delete('/delete/:id', (req, res) => {
-  Model.findByIdAndDelete(req.params.id)
+// Get feedback by product
+router.get('/product/:id', (req, res) => {
+  FeedbackModel.find({ product: req.params.id })
+    .populate('user', 'name email')
     .then((result) => {
       res.status(200).json(result);
-
     }).catch((err) => {
       console.log(err);
       res.status(500).json(err);
-
     });
 });
 
-router.get('/getbyid/:id', (req, res) => {
-  Model.findById(req.params.id)
-    .then((result) => {
-      res.status(200).json(result);
-
-    }).catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-
-    });
-});
-
+// Update feedback
 router.put('/update/:id', (req, res) => {
-  Model.findByIdAndUpdate(req.params.id, req.body, { new: true })
+  FeedbackModel.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .then((result) => {
+      res.status(200).json(result);
+    }).catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+// Delete feedback
+router.delete('/delete/:id', (req, res) => {
+  FeedbackModel.findByIdAndDelete(req.params.id)
     .then((result) => {
       res.status(200).json(result);
     }).catch((err) => {

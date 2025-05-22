@@ -34,6 +34,16 @@ router.get('/getbyemail/:email', (req, res) => {
   res.send('respond from user email');
 });
 
+// Add to UserRouter.js
+router.put('/update/:id', (req, res) => {
+  Model.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .then((result) => {
+      res.status(200).json(result);
+    }).catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 router.delete('/delete/:id', (req, res) => {
   Model.findByIdAndDelete(req.params.id)
@@ -44,35 +54,34 @@ router.delete('/delete/:id', (req, res) => {
       res.status(500).json(err);
     });
 });
-router.post('/authenticate', (req,res) =>{
+router.post('/authenticate', (req, res) => {
   Model.findOne(req.body)
-  .then((result) => {
-    if (result)
-    {
-      //login success -generate token
-      const { _id, name, email } = result;
-      const payload = { _id, name, email };
-      jwt.sign(
-        payload,
-        process.env.JWT_SECRET,
-        {expiresIn: '2d'},
-        (err,token) => {
-          if (err){
-            console.log(err);
-            res.status(500).json(err);
-          } else {
-            res.status(200).json({token}); // Fixed: Was sending 500 for success
+    .then((result) => {
+      if (result) {
+        //login success -generate token
+        const { _id, name, email } = result;
+        const payload = { _id, name, email };
+        jwt.sign(
+          payload,
+          process.env.JWT_SECRET,
+          { expiresIn: '2d' },
+          (err, token) => {
+            if (err) {
+              console.log(err);
+              res.status(500).json(err);
+            } else {
+              res.status(200).json({ token }); // Fixed: Was sending 500 for success
+            }
           }
-        }
-      )
-    } else {
-      //login failed -send error message
-      res.status(401).json({message:'Invalid email or password'}); // Fixed: Added proper error message
-    }
-  }).catch((err) => {
-    console.log(err);
-    res.status(500).json(err);
-  });
+        )
+      } else {
+        //login failed -send error message
+        res.status(401).json({ message: 'Invalid email or password' }); // Fixed: Added proper error message
+      }
+    }).catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 })
 //getall
 
