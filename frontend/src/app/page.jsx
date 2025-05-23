@@ -29,7 +29,7 @@ const Home = () => {
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <Link
-                  href="/shop"
+                  href="/browse-products"
                   className="inline-flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-700 text-white font-medium py-3 px-8 rounded-full transition"
                 >
                   Shop Now <ArrowRight size={18} />
