@@ -16,7 +16,7 @@ const Home = () => {
           <img
             className="w-full h-full object-cover"
             alt="Pottery hero"
-            src="/slide.jpg"
+            src="slide.jpg"
           />
           <div className="absolute inset-0 bg-black/30" />
           <div className="absolute inset-0 flex items-center justify-center">
@@ -99,7 +99,7 @@ const Home = () => {
             </ul>
           </div>
           <img
-            src="https://images.unsplash.com/photo-1616628182504-5a1f7f30d65a"
+            src="one.jpg"
             alt="Craft process"
             className="rounded-xl shadow-lg"
           />

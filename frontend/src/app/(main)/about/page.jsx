@@ -1,16 +1,14 @@
-
 'use client';
 import React from "react";
 import Image from "next/image";
 import { Leaf, Users, Sparkles, Brush } from "lucide-react";
-
 const About = () => {
   return (
     <div className="bg-white text-neutral-800 dark:bg-neutral-900 dark:text-neutral-100 min-h-screen">
       {/* Hero Section */}
       <section className="relative h-96 w-full">
         <Image
-          src="#"
+          src="/"
           alt="Mitti Mahal pottery banner"
           layout="fill"
           objectFit="cover"
@@ -35,7 +33,7 @@ const About = () => {
             </p>
           </div>
           <Image
-            src="/images/intro-pottery.jpg"
+            src="/tow.jpg"
             alt="Handmade pottery"
             width={600}
             height={400}
@@ -67,7 +65,7 @@ const About = () => {
               <li>Hand-painting and glazing with care.</li>
             </ol>
             <Image
-              src="/images/process.jpg"
+              src="/ourproces.jpg"
               alt="Pottery process"
               width={600}
               height={400}

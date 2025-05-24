@@ -124,7 +124,7 @@ const Navbar = () => {
             </Link>
             
             {/* Cart button with badge */}
-            <Link href="/cart" className="relative p-2 text-amber-10 hover:text-amber-300 transition">
+            <Link href="/add-cart" className="relative p-2 text-amber-10 hover:text-amber-300 transition">
               <ShoppingBag size={20} />
               <span className="absolute -top-1 -right-1 bg-amber-300 text-amber-900 text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
                 3
@@ -135,7 +135,7 @@ const Navbar = () => {
         
         <div className="flex items-center gap-4 md:hidden">
           {/* Cart button in mobile view */}
-          <Link href="/cart" className="relative p-1 text-amber-100">
+          <Link href="/add-cart" className="relative p-1 text-amber-100">
             <ShoppingBag size={22} />
             <span className="absolute -top-1 -right-1 bg-amber-300 text-amber-900 text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
               3
