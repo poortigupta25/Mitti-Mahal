@@ -58,35 +58,37 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="max-w-xl mx-auto mt-10 bg-white dark:bg-neutral-900 p-6 rounded-2xl shadow-lg">
-      <h2 className="text-3xl font-semibold text-center text-gray-800 dark:text-white mb-6">
+    <div className="max-w-xl mx-auto my-8 bg-gradient-to-br from-amber-100 via-amber-50 to-amber-200 dark:from-amber-900 dark:via-amber-800 dark:to-yellow-900 p-7 rounded-3xl shadow-2xl border-2 border-amber-300 dark:border-yellow-900 relative overflow-hidden">
+      {/* Decorative Amber & Brown Circles */}
+      <div className="absolute -top-10 -left-10 w-28 h-28 bg-amber-300 dark:bg-yellow-900 rounded-full opacity-30 blur-2xl z-0"></div>
+      <div className="absolute -bottom-10 -right-10 w-20 h-20 bg-yellow-900 dark:bg-amber-700 rounded-full opacity-20 blur-2xl z-0"></div>
+      <h2 className="text-3xl font-extrabold text-center text-amber-800 dark:text-yellow-100 mb-7 tracking-tight drop-shadow-lg z-10 relative">
         Add New Product
       </h2>
-
-      <form onSubmit={formik.handleSubmit} className="space-y-5">
+      <form onSubmit={formik.handleSubmit} className="space-y-6 z-10 relative">
         {['name', 'price', 'description', 'category', 'color', 'stock'].map((field) => (
           <div key={field}>
             <label
               htmlFor={field}
-              className="block text-sm font-medium mb-1 capitalize dark:text-white"
+              className="block text-base font-semibold mb-1 capitalize text-yellow-900 dark:text-yellow-100 tracking-wide"
             >
               {field}
             </label>
-
             {field === 'description' ? (
               <textarea
                 id={field}
                 rows="4"
                 onChange={formik.handleChange}
                 value={formik.values[field]}
-                className="w-full p-3 rounded-lg border dark:border-neutral-700 dark:bg-neutral-800 dark:text-white"
+                className="w-full p-3 rounded-xl border-2 border-yellow-900 dark:border-yellow-800 bg-amber-50 dark:bg-yellow-900 text-yellow-900 dark:text-yellow-100 focus:ring-2 focus:ring-amber-400 focus:border-amber-500 transition placeholder:text-yellow-700 dark:placeholder:text-yellow-200"
+                placeholder="Enter product description..."
               />
             ) : field === 'category' ? (
               <select
                 id={field}
                 onChange={formik.handleChange}
                 value={formik.values[field]}
-                className="w-full p-3 rounded-lg border dark:border-neutral-700 dark:bg-neutral-800 dark:text-white"
+                className="w-full p-3 rounded-xl border-2 border-yellow-900 dark:border-yellow-800 bg-amber-50 dark:bg-yellow-900 text-yellow-900 dark:text-yellow-100 focus:ring-2 focus:ring-amber-400 focus:border-amber-500 transition"
               >
                 <option value="" disabled>Select category</option>
                 <option value="utensils">Utensils</option>
@@ -100,45 +102,41 @@ const AddProduct = () => {
                 id={field}
                 onChange={formik.handleChange}
                 value={formik.values[field]}
-                className="w-full p-3 rounded-lg border dark:border-neutral-700 dark:bg-neutral-800 dark:text-white"
+                className="w-full p-3 rounded-xl border-2 border-yellow-900 dark:border-yellow-800 bg-amber-50 dark:bg-yellow-900 text-yellow-900 dark:text-yellow-100 focus:ring-2 focus:ring-amber-400 focus:border-amber-500 transition placeholder:text-yellow-700 dark:placeholder:text-yellow-200"
+                placeholder={`Enter ${field}`}
               />
             )}
-
             {formik.touched[field] && formik.errors[field] && (
-              <p className="text-xs text-red-600 mt-1">{formik.errors[field]}</p>
+              <p className="text-xs text-red-600 mt-1 font-medium">{formik.errors[field]}</p>
             )}
           </div>
         ))}
-
         {/* Image Upload */}
         <div className="flex flex-col items-center">
           {preview ? (
             <img
               src={preview}
               alt="preview"
-              className="w-32 h-32 object-cover rounded-lg mb-3"
+              className="w-32 h-32 object-cover rounded-2xl mb-3 border-4 border-yellow-900 dark:border-yellow-800 shadow-lg bg-amber-100 dark:bg-yellow-900"
             />
           ) : (
-            <div className="w-32 h-32 flex items-center justify-center bg-gray-100 dark:bg-neutral-800 rounded-lg mb-3">
-              <ImagePlus className="text-gray-400" />
+            <div className="w-32 h-32 flex items-center justify-center bg-amber-100 dark:bg-yellow-900 rounded-2xl mb-3 border-2 border-dashed border-yellow-900 dark:border-yellow-800">
+              <ImagePlus className="text-amber-400 w-10 h-10" />
             </div>
           )}
-
-          <label className="cursor-pointer text-blue-600 hover:underline text-sm flex items-center gap-1">
-            <UploadCloud className="w-4 h-4" />
+          <label className="cursor-pointer text-yellow-900 hover:text-amber-700 hover:underline text-base flex items-center gap-2 dark:text-yellow-100 font-semibold">
+            <UploadCloud className="w-5 h-5" />
             Upload Image
             <input type="file" hidden onChange={upload} />
           </label>
-
           {formik.errors.image && (
-            <p className="text-xs text-red-600 mt-2">{formik.errors.image}</p>
+            <p className="text-xs text-red-600 mt-2 font-medium">{formik.errors.image}</p>
           )}
         </div>
-
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full py-3 text-white bg-blue-600 hover:bg-blue-700 rounded-lg font-medium"
+          className="w-full py-3 text-yellow-50 bg-gradient-to-r from-yellow-900 via-amber-600 to-amber-700 hover:from-yellow-800 hover:to-amber-800 rounded-xl font-bold text-lg shadow-lg tracking-wide transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-amber-300"
         >
           Submit Product
         </button>
